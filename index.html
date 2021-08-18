@@ -1,0 +1,48 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<div class="thumbs-block">
+  <div class="thumbs">
+  		<ul>
+  			<li>sdffsd</li>
+  			<li>sdfrefrregg</li>
+  			<li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li><li>sdfrrgtthyhyyhy</li>
+  		</ul>
+
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	       var $bl    = $(".thumbs-block"),
+        $th    = $(".thumbs"),
+        blW    = $bl.outerWidth(),
+        blSW   = $bl[0].scrollWidth,
+        wDiff  = (blSW/blW)-1,  // widths difference ratio
+        mPadd  = 60,  // Mousemove Padding
+        damp   = 20,  // Mousemove response softness
+        mX     = 0,   // Real mouse position
+        mX2    = 0,   // Modified mouse position
+        posX   = 0,
+        mmAA   = blW-(mPadd*2), // The mousemove available area
+        mmAAr  = (blW/mmAA);    // get available mousemove fidderence ratio
+
+	$bl.mousemove(function(e) {
+        mX = e.pageX - this.offsetLeft;
+        mX2 = Math.min( Math.max(0, mX-mPadd), mmAA ) * mmAAr;
+	});
+
+	setInterval(function(){
+		posX += (mX2 - posX) / damp; // zeno's paradox equation "catching delay"	
+		$th.css({marginLeft: -posX*wDiff });
+	}, 10);
+</script>	
+</body>
+</html>
